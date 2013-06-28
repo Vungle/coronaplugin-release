@@ -1,6 +1,6 @@
 {
-    "contact": "PUBLISHER_CONTACT@PUBLISHER_URL",
-    "url": "http://PUBLISHER_URL",
-    "pluginName": "plugin.PLUGIN_NAME",
-    "publisherId": "REVERSE_PUBLISHER_URL"
+    "contact": "tech-support@vungle.com",
+    "url": "http://v.vungle.com",
+    "pluginName": "plugin.vungle",
+    "publisherId": "com.vungle"
 }
