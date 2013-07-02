@@ -2,9 +2,9 @@
 
 > --------------------- ------------------------------------------------------------------------------------------
 > __Type__              [provider][api.type.CoronaProvider]
-> __Revision__          [1.0.0](/plugin/vungle/)
-> __Keywords__          vungle, ads, advertising, video
-> __Sample code__       /CoronaSDK/SampleCode/Ads/vungle
+> __Revision__          [Current Public Release (1.0.0)][plugin.vungle]
+> __Keywords__          ads, advertising, video, vungle
+> __Sample code__       <https://github.com/coronalabs/plugins-sample-ads-vungle>, /CoronaSDK/SampleCode/Ads/vungle
 > __See also__          [Marketplace](http://www.coronalabs.com/resources/plugins/)
 > __Availability__      Starter, Pro, Enterprise
 > --------------------- ------------------------------------------------------------------------------------------
@@ -26,33 +26,35 @@ The following platforms are supported:
 
 ## Syntax
 
-You access the Vungle plugin by passing its provider name to the [ads library][api.library.ads]:
+You access the Vungle plugin by passing its provider name to the [ads library][/guide/monetization/adSupport/index.html#plugins]:
 
 	local ads = require "ads"
 	ads.init( "vungle", appID, adListener )
 
 ## Functions
 
-The Vungle plugin implements the core API specified by the [ads library][api.library.ads]:
+The Vungle plugin implements the following [ads library][api.library.ads] core API:
 
 #### [ads.hide()][api.library.ads.hide]
 
 No-op.  Vungle video ads hide themselves when the user clicks the close button.
 
-#### [ads.hide()][api.library.ads.init]
+#### [ads.init()][api.library.ads.init]
 
-Initializes the Vungle ad provider with your application's ID and an optional (function or table) [event listener](http://developer.coronalabs.com/content/events-and-listeners).
+Initializes the Vungle ad provider with your Vungle application ID and an optional (function or table) 
+[event listener](http://developer.coronalabs.com/content/events-and-listeners).
 
-#### [ads.hide()][api.library.ads.show]
+#### [ads.show()][api.library.ads.show]
 
 Shows (plays) a Vungle video ad if one is available.
 
 
-In addition, the Vungle plugin also provides the following functions:
+In addition, the Vungle plugin also provides the following additional functions:
 
 #### [vungle.isAdAvailable()][plugin.vungle.isAdAvailable]
 
-Vungle downloads and pre-caches the next video ad in the background for an optimal user experience.  This method returns a boolean indicating whether an ad has been cached and is available for playback.
+Vungle downloads and pre-caches the next video ad in the background for optimal user experience.  
+Returns a boolean indicating whether an ad has been cached and is available for playback.
 
 #### [vungle.getVersionString()][plugin.vungle.getVersionString]
 
@@ -60,15 +62,16 @@ Returns a string describing the Vungle plugin version.
 
 #### [vungle.showCacheFiles()][plugin.vungle.showCacheFiles]
 
-(iOS only) Returns a list of the files in the Vungle cache.
+(iOS only) Outputs the list of files in the Vungle cache to the log.
 
 ## Project Settings
 
 ### SDK
 
-When you build using the Corona Simulator, the server automatically takes care of integrating the plugin into your project. 
+When you build using the Corona Simulator, the server automatically takes care of integrating the plugin into your project.
 
-All you need to do is add an entry into a `plugins` table of your `build.settings`. The following is an example of a minimal `build.settings` file:
+All you need to do is add an entry into a `plugins` table of your `build.settings`.  
+The following is an example of a minimal `build.settings` file:
 
 ``````
 settings =
@@ -79,24 +82,25 @@ settings =
 		["CoronaProvider.ads.vungle"] =
 		{
 			-- required
-			publisherId = "[your Vungle publisher ID]",
+			publisherId = "your Vungle app ID",
 		},
 	},		
 }
 ``````
 
+<!---
 ### Enterprise
 
 TBD
+-->
 
 ## Sample Code
 
-You can access sample code [here](SAMPLE_CODE_URL).
+<https://github.com/coronalabs/plugins-sample-ads-vungle>
 
 ## Support
 
 More support is available from the Vungle team:
 
-* [E-mail](mailto://tech-support@vungle.com)
-* [Forum](http://forum.coronalabs.com/plugin/vungle)
-* [Plugin Publisher](http://v.vungle.com)
+* <tech-support@vungle.com>
+* <http://v.vungle.com>
