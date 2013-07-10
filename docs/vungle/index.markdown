@@ -2,7 +2,7 @@
 
 > --------------------- ------------------------------------------------------------------------------------------
 > __Type__              [provider][api.type.CoronaProvider]
-> __Revision__          [Current Public Release (1.0.0)][plugin.vungle]
+> __Revision__          [Current Public Release (2013.1137)][plugin.vungle]
 > __Keywords__          ads, advertising, video, vungle
 > __Sample code__       <https://github.com/coronalabs/plugins-sample-ads-vungle>, /CoronaSDK/SampleCode/Ads/vungle
 > __See also__          [Marketplace](http://www.coronalabs.com/resources/plugins/)

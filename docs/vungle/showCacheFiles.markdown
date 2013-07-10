@@ -4,7 +4,7 @@
 > __Type__              [function][api.type.function]
 > __Library__           [CoronaProvider.ads.vungle.*][plugin.vungle]
 > __Return value__      [Boolean][api.type.Boolean]
-> __Revision__          [Current Public Release (1.0.0)](/plugin/vungle/)
+> __Revision__          [Current Public Release (2013.1137)][plugin.vungle]
 > __Keywords__          cache, cached, debug, files, showCachedFiles, showCacheFiles, show, vungle
 > __Sample code__       <https://github.com/coronalabs/plugins-sample-ads-vungle>, /CoronaSDK/SampleCode/Ads/vungle
 > --------------------- ------------------------------------------------------------------------------------------
