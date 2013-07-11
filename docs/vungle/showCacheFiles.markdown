@@ -3,15 +3,15 @@
 > --------------------- ------------------------------------------------------------------------------------------
 > __Type__              [function][api.type.function]
 > __Library__           [CoronaProvider.ads.vungle.*][plugin.vungle]
-> __Return value__      [Boolean][api.type.Boolean]
-> __Revision__          [Current Public Release (2013.1137)][plugin.vungle]
-> __Keywords__          cache, cached, debug, files, showCachedFiles, showCacheFiles, show, vungle
+> __Return value__      none
+> __Revision__          [REVISION_LABEL](REVISION_URL)
+> __Keywords__          cache, cached, debug, display, files, showCachedFiles, showCacheFiles, show, vungle
 > __Sample code__       <https://github.com/coronalabs/plugins-sample-ads-vungle>, /CoronaSDK/SampleCode/Ads/vungle
 > --------------------- ------------------------------------------------------------------------------------------
 
 ## Overview
 
-Writes the list of files in the Vungle cache to the log.  This function always returns true.
+Writes the list of files in the Vungle cache to the log.
 
 ## Syntax
 
@@ -20,6 +20,18 @@ Writes the list of files in the Vungle cache to the log.  This function always r
 ## Examples
 
 ``````lua
+-- name of the Vungle 'ads' provider
+local provider = "vungle"
+
+-- your Vungle application ID
+local appID = "vungleTest"
+
+-- load Corona 'ads' library
+local ads = require "ads"
+
+-- initialize the 'ads' library using Vungle as the provider and without the optional 3rd 'listener' parameter
+ads.init( provider, appID, adListener )
+
 -- outputs the list of files in the Vungle cache to the log
-vungle.showCacheFiles()
+ads.showCacheFiles()
 ``````
