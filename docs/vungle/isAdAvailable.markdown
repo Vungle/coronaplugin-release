@@ -17,24 +17,24 @@ Returns a [Boolean][api.type.Boolean] indicating whether a cached video ad is av
 
 	vungle.isAdAvailable()
 
-## Examples
+## Example
 
 ``````lua
 -- name of the Vungle 'ads' provider
 local provider = "vungle"
 
 -- your Vungle application ID
-local appID = "vungleTest"
+local appId = "vungleTest"
 
 -- load Corona 'ads' library
 local ads = require "ads"
 
--- initialize the 'ads' library using Vungle as the provider and without the optional 3rd 'listener' parameter
-ads.init( provider, appID, adListener )
+-- initialize the 'ads' library using Vungle as the provider and without the optional 'listener' 3rd parameter
+ads.init( provider, appId )
 
 -- if a cached video ad is available for display
 if ads.isAdAvailable() then
-	-- show the ad (without the optional 3rd 'options' table parameter
-	ads.show( provider, "interstitial" )
+	-- show the ad (without the optional 2nd 'params' table)
+	ads.show( "interstitial" )
 end
 ``````

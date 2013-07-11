@@ -17,20 +17,20 @@ Writes the list of files in the Vungle cache to the log.
 
 	vungle.showCacheFiles()
 
-## Examples
+## Example
 
 ``````lua
 -- name of the Vungle 'ads' provider
 local provider = "vungle"
 
 -- your Vungle application ID
-local appID = "vungleTest"
+local appId = "vungleTest"
 
 -- load Corona 'ads' library
 local ads = require "ads"
 
--- initialize the 'ads' library using Vungle as the provider and without the optional 3rd 'listener' parameter
-ads.init( provider, appID, adListener )
+-- initialize the 'ads' library using Vungle as the provider and without the optional 'listener' 3rd parameter
+ads.init( provider, appId )
 
 -- outputs the list of files in the Vungle cache to the log
 ads.showCacheFiles()
