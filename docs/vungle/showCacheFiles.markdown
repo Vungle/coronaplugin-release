@@ -23,7 +23,7 @@ Writes the list of files in the Vungle cache to the log.
 -- name of the Vungle 'ads' provider
 local provider = "vungle"
 
--- your Vungle application ID
+-- replace with your own Vungle application ID
 local appId = "vungleTest"
 
 -- load Corona 'ads' library

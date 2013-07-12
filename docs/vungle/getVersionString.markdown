@@ -23,7 +23,7 @@ Returns the plugin and underlying SDK version numbers as a [String][api.type.Str
 -- name of the Vungle 'ads' provider
 local provider = "vungle"
 
--- your Vungle application ID
+-- replace with your own Vungle application ID
 local appId = "vungleTest"
 
 -- load Corona 'ads' library

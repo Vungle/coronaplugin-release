@@ -23,7 +23,7 @@ Returns a [Boolean][api.type.Boolean] indicating whether a cached video ad is av
 -- name of the Vungle 'ads' provider
 local provider = "vungle"
 
--- your Vungle application ID
+-- replace with your own Vungle application ID
 local appId = "vungleTest"
 
 -- load Corona 'ads' library

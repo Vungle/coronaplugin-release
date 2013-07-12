@@ -57,7 +57,7 @@ Note:  The close button can be hidden for both ad types on the [Vungle Dashboard
 -- name of the Vungle 'ads' provider
 local provider = "vungle"
 
--- your Vungle application ID
+-- replace with your own Vungle application ID
 local appId = "vungleTest"
 
 -- load Corona 'ads' library

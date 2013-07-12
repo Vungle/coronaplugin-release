@@ -1,14 +1,22 @@
 settings =
 {
-	--[[
 	orientation = {
 		default = "portrait", 
-		supported = { "portrait", },
+		-- supported = { "portrait", },
 		-- supported = { "landscapeLeft", "landscapeRight" },
 		-- supported = { "landscapeLeft", "landscapeRight", "portrait", "portraitUpsideDown", },
+		supported = { "landscapeLeft", "landscapeRight", "portrait" }
 	},
-	--]]
-
+	android =
+	{
+		usesPermissions =
+		{
+			"android.permission.INTERNET",
+			"android.permission.WRITE_EXTERNAL_STORAGE",
+			"android.permission.ACCESS_WIFI_STATE",
+			"android.permission.ACCESS_NETWORK_STATE"
+		},
+	},
 	iphone =
 	{
 		plist =
@@ -23,24 +31,5 @@ settings =
 			},
 
 		},
-	},
-
-	-- INSTRUCTIONS
-	-- 
-	-- NOTE: These are for standard library plugins, not for provider plugins.
-	-- 
-	-- 1. Uncomment this block
-	-- 2. Rename PLUGIN_NAME to the name of your plugin, e.g. "openudid"
-	-- 3. Rename REVERSE_PUBLISHER_URL using the reverse domain name, e.g. "com.mycompany"
-	--[[
-	plugins =
-	{
-		-- key is the name passed to Lua's 'require()'
-		["plugin.PLUGIN_NAME"] =
-		{
-			-- required
-			publisherId = "REVERSE_PUBLISHER_URL",
-		},
-	},
-	--]]
+	}
 }
