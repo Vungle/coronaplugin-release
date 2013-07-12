@@ -29,7 +29,7 @@ The following platforms are supported:
 You access the Vungle plugin by passing its provider name to the [ads library][/guide/monetization/adSupport/index.html#plugins]:
 
 	local ads = require "ads"
-	ads.init( "vungle", appID, adListener )
+	ads.init( "vungle", appID [, adListener] )
 
 ## Functions
 
@@ -44,7 +44,7 @@ No-op.  Vungle video ads hide themselves when the user clicks the close button.
 Initializes the Vungle ad provider with your Vungle application ID and an optional (function or table) 
 [event listener](http://developer.coronalabs.com/content/events-and-listeners).
 
-#### [ads.show()][api.library.ads.show]
+#### [ads.show()][plugin.vungle.show]
 
 Shows (plays) a Vungle video ad if one is available.
 
@@ -53,7 +53,8 @@ In addition, the Vungle plugin also provides the following additional functions:
 
 #### [vungle.isAdAvailable()][plugin.vungle.isAdAvailable]
 
-Vungle downloads and pre-caches the next video ad in the background for optimal user experience.  
+Vungle downloads and pre-caches the next video ad to show in the background for optimal user experience.  
+
 Returns a boolean indicating whether an ad has been cached and is available for playback.
 
 #### [vungle.getVersionString()][plugin.vungle.getVersionString]
@@ -68,9 +69,11 @@ Returns a string describing the Vungle plugin version.
 
 ### SDK
 
-When you build using the Corona Simulator, the server automatically takes care of integrating the plugin into your project.
+
+When you build using the Corona Simulator, the server automatically takes care of integrating the ads plugin into your project.
 
 All you need to do is add an entry into a `plugins` table of your `build.settings`.  
+
 The following is an example of a minimal `build.settings` file:
 
 ``````
@@ -82,17 +85,11 @@ settings =
 		["CoronaProvider.ads.vungle"] =
 		{
 			-- required
-			publisherId = "your Vungle app ID",
+			publisherId = "com.vungle",
 		},
 	},		
 }
 ``````
-
-<!---
-### Enterprise
-
-TBD
--->
 
 ## Sample Code
 

@@ -29,7 +29,7 @@ local appId = "vungleTest"
 -- load Corona 'ads' library
 local ads = require "ads"
 
--- initialize the 'ads' library using Vungle as the provider and without the optional 'listener' 3rd parameter
+-- initialize the 'ads' library using Vungle as the provider and without the optional 3rd parameter 'listener'
 ads.init( provider, appId )
 
 -- outputs the list of files in the Vungle cache to the log

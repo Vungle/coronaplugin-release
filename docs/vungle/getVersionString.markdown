@@ -29,9 +29,9 @@ local appId = "vungleTest"
 -- load Corona 'ads' library
 local ads = require "ads"
 
--- initialize the 'ads' library using Vungle as the provider and without the optional 'listener' 3rd parameter
+-- initialize the 'ads' library using Vungle as the provider and without the optional 3rd parameter 'listener'
 ads.init( provider, appId )
 
--- outputs a string resembling "1.0.0 (VungleDroid/1.2.2)"
+-- outputs a string of the form "1.0.0 (VungleDroid/1.2.2)"
 print(ads.getVersionString())
 ``````
