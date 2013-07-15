@@ -87,11 +87,7 @@ local ads = require "ads"
 --==================================================================================================
 
 -- Create a text object to display ad status
-<<<<<<< HEAD
-local statusText = display.newRetinaText("", 0, 0, native.systemFontBold, 22 )
-=======
 local statusText = display.newText("", 0, 0, native.systemFontBold, 22 )
->>>>>>> 3ce6775522f96df6558a027faec6cfdbb7c699ec
 statusText:setTextColor( 255 )
 statusText:setReferencePoint( display.CenterReferencePoint )
 statusText.x, statusText.y = display.contentWidth * 0.5, 160
@@ -112,11 +108,7 @@ end
 -- set up a function ad listener
 function functionAdListener( event )
 	if event.type == "adStart" and event.isError then
-<<<<<<< HEAD
-		statusText.text = "Downloading a video ad ..."
-=======
 		statusText.text = "Downloading a video ad..."
->>>>>>> 3ce6775522f96df6558a027faec6cfdbb7c699ec
 		statusText.x = display.contentWidth * 0.5
 		-- wait 5 seconds then try to display ad
 		timer.performWithDelay(5000, showAd)
@@ -129,28 +121,17 @@ function functionAdListener( event )
 	end
 end
 
-<<<<<<< HEAD
----- or set up a table ad listener
---local tableAdListener = {adsRequest = functionAdListener}
---
-=======
 -- or a table listener
 local tableAdListener = {}
 function tableAdListener:adsRequest(event)
 	functionAdListener(event)
 end
 
->>>>>>> 3ce6775522f96df6558a027faec6cfdbb7c699ec
 --==================================================================================================
 -- Initialize 'ads' library and Vungle video ad provider
 --==================================================================================================
 
-<<<<<<< HEAD
-ads.init( provider, appId, functionAdListener )
--- ads.init( provider, appId, tableAdListener )
-=======
 ads.init( provider, appId, tableAdListener )
->>>>>>> 3ce6775522f96df6558a027faec6cfdbb7c699ec
 
 ----==================================================================================================
 ---- UI
