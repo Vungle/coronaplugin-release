@@ -15,13 +15,115 @@
 -- The code below demonstrates how to display a Vungle video ad and how to create a listener 
 -- to handle the case when an pre-cached video ad is not available to display.
 --
--- Version: 1.0 (July 12, 2013)
+-- Version: 1.0 (July 15, 2013)
 --
 -- Sample code is MIT licensed, see http://www.coronalabs.com/links/code/license
--- Copyright (C) 2012 Corona Labs Inc.  All Rights Reserved.
--- Copyright (C) 2013 Vungle.  All Rights Reserved.
---
+-- Copyright (c) 2012 Corona Labs Inc.  All Rights Reserved.
+-- Copyright (c) 2013 Vungle.  All Rights Reserved.
+-- 
 --==================================================================================================
+
+--==================================================================================================
+-- Initial configuration and load Corona 'ads' library
+--==================================================================================================
+
+-- hides the status bar
+display.setStatusBar( display.HiddenStatusBar )
+
+-- the name of the ad provider
+-- Corona uses this value to construct the name of the plugin.
+-- Corona then asks Lua to load a module with the name "CoronaProvider.ads.[provider]"
+local provider = "vungle"
+
+-- replace with your own Vungle application ID
+local appId = "vungleTest"
+
+-- load Corona 'ads' library
+local ads = require "ads"
+
+--==================================================================================================
+-- Show video ad function and event listener
+--==================================================================================================
+
+-- create a text object to display ad status
+local statusText = display.newText("", 0, 0, native.systemFontBold, 22 )
+
+-- show an ad if one has been downloaded and is available for playback
+function showAd()
+	ads.show( "interstitial", { isBackButtonEnabled = true } )
+end
+
+-- event table includes:
+--		event.name		=	'adsRequest'
+--		event.provider	=	'vungle'
+--		event.type			(string - e.g. 'adStart', 'adView', 'adEnd')
+--		event.isError		(boolean)
+--		event.response		(string)
+
+-- create a 'function' ad listener
+function functionAdListener( event )
+	-- video ad not yet downloaded and available
+	if event.type == "adStart" and event.isError then
+		statusText.text = "Downloading video ad ..."
+		statusText.x = display.contentWidth * 0.5
+		-- wait 5 seconds before retrying to display ad
+		timer.performWithDelay(5000, showAd)
+	-- video ad displayed and then closed
+	elseif event.type == "adEnd" then
+		statusText.text = "Hope you enjoyed the video!"
+		statusText.x = display.contentWidth * 0.5
+	else
+		print( "Received event:")
+		vardump( event )
+	end
+end
+
+-- or create a 'table' ad listener
+local tableAdListener = {}
+function tableAdListener:adsRequest(event)
+	functionAdListener(event)
+end
+
+--==================================================================================================
+-- Initialize 'ads' library and Vungle video ad provider
+--==================================================================================================
+
+-- use function ad listener
+ads.init( provider, appId, functionAdListener )
+
+-- use table ad listener
+-- ads.init( provider, appId, tableAdListener )
+
+--==================================================================================================
+-- UI
+--==================================================================================================
+
+-- initial variables
+local sysModel = system.getInfo("model")
+local sysEnv = system.getInfo("environment")
+
+-- create a background for the app
+local backgroundImg = display.newImageRect( "space.png", display.contentWidth, display.contentHeight )
+backgroundImg:setReferencePoint( display.TopLeftReferencePoint )
+backgroundImg.x, backgroundImg.y = 0, 0
+
+-- set up text object
+statusText:setTextColor( 255 )
+statusText:setReferencePoint( display.CenterReferencePoint )
+statusText.x, statusText.y = display.contentWidth * 0.5, 160
+statusText:toFront()
+
+-- if on simulator, message user that they must build for device
+if sysEnv == "simulator" then
+	local font, size = native.systemFontBold, 22
+	local warningText = display.newRetinaText( "Please build for device or Xcode simulator to test this sample.", 0, 0, 290, 300, font, size )
+	warningText:setTextColor( 255 )
+	warningText:setReferencePoint( display.CenterReferencePoint )
+	warningText.x, warningText.y = display.contentWidth * 0.5, display.contentHeight * 0.5
+else
+	-- show an ad if one if available for playback
+	showAd()
+end
 
 --==================================================================================================
 -- Utility
@@ -62,99 +164,4 @@ function vardump(value, depth, key)
 	else
 		print(spaces..linePrefix.."("..type(value)..") "..tostring(value))
 	end
-end
-
---==================================================================================================
--- Initial configuration and load Corona 'ads' library
---==================================================================================================
-
--- hides the status bar
-display.setStatusBar( display.HiddenStatusBar )
-
--- the name of the ad provider
--- Corona uses this value to construct the name of the plugin.
--- Corona then asks Lua to load a module with the name "CoronaProvider.ads.[provider]"
-local provider = "vungle"
-
--- replace with your own Vungle application ID
-local appId = "vungleTest"
-
--- load Corona 'ads' library
-local ads = require "ads"
-
---==================================================================================================
--- Play video ad function and event listener
---==================================================================================================
-
--- Create a text object to display ad status
-local statusText = display.newText("", 0, 0, native.systemFontBold, 22 )
-statusText:setTextColor( 255 )
-statusText:setReferencePoint( display.CenterReferencePoint )
-statusText.x, statusText.y = display.contentWidth * 0.5, 160
-statusText:toFront()
-
--- show an ad if one has been downloaded and is available for playback
-function showAd()
-	ads.show( "interstitial", { isBackButtonEnabled = true } )
-end
-
--- event table includes:
---		event.name		=	'adsRequest'
---		event.provider	=	'vungle'
---		event.type			(string - e.g. 'adStart', 'adView', 'adEnd')
---		event.isError		(boolean)
---		event.response		(string)
-
--- set up a function ad listener
-function functionAdListener( event )
-	if event.type == "adStart" and event.isError then
-		statusText.text = "Downloading a video ad..."
-		statusText.x = display.contentWidth * 0.5
-		-- wait 5 seconds then try to display ad
-		timer.performWithDelay(5000, showAd)
-	elseif event.type == "adEnd" then
-		statusText.text = "Hope you enjoyed the video!"
-		statusText.x = display.contentWidth * 0.5
-	else
-		print( "Received event:")
-		vardump( event )
-	end
-end
-
--- or a table listener
-local tableAdListener = {}
-function tableAdListener:adsRequest(event)
-	functionAdListener(event)
-end
-
---==================================================================================================
--- Initialize 'ads' library and Vungle video ad provider
---==================================================================================================
-
-ads.init( provider, appId, tableAdListener )
-
-----==================================================================================================
----- UI
-----==================================================================================================
-
--- initial variables
-local sysModel = system.getInfo("model")
-local sysEnv = system.getInfo("environment")
-
--- create a background for the app
-local backgroundImg = display.newImageRect( "space.png", display.contentWidth, display.contentHeight )
-backgroundImg:setReferencePoint( display.TopLeftReferencePoint )
-backgroundImg.x, backgroundImg.y = 0, 0
-backgroundImg:toBack()
-
--- if on simulator, let user know they must build for device
-if sysEnv == "simulator" then
-	local font, size = native.systemFontBold, 22
-	local warningText = display.newRetinaText( "Please build for device or Xcode simulator to test this sample.", 0, 0, 290, 300, font, size )
-	warningText:setTextColor( 255 )
-	warningText:setReferencePoint( display.CenterReferencePoint )
-	warningText.x, warningText.y = display.contentWidth * 0.5, display.contentHeight * 0.5
-else
-	-- show an ad if one if available for playback
-	showAd()
 end
