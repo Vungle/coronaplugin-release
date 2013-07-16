@@ -4,7 +4,7 @@
 > __Type__              [provider][api.type.CoronaProvider]
 > __Revision__          [REVISION_LABEL](REVISION_URL)
 > __Keywords__          ads, advertising, video, vungle
-> __Sample code__       <https://github.com/coronalabs/plugins-sample-ads-vungle>, /CoronaSDK/SampleCode/Ads/vungle
+> __Sample code__       <https://github.com/Vungle/coronaplugin-release/tree/master/samples>
 > __See also__          [Marketplace](http://www.coronalabs.com/resources/plugins/)
 > __Availability__      Starter, Pro, Enterprise
 > --------------------- ------------------------------------------------------------------------------------------
@@ -93,7 +93,7 @@ settings =
 
 ## Sample Code
 
-<https://github.com/coronalabs/plugins-sample-ads-vungle>
+<https://github.com/Vungle/coronaplugin-release/tree/master/samples>
 
 ## Support
 
