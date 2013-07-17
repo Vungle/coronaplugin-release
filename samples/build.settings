@@ -31,5 +31,14 @@ settings =
 			},
 
 		},
+	},
+	plugins =
+	{
+		-- key is the name passed to Lua's 'require()'
+		["CoronaProvider.ads.vungle"] =
+		{
+			-- required
+			publisherId = "com.vungle",
+		},
 	}
 }
