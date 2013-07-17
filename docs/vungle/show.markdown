@@ -6,7 +6,7 @@
 > __Return value__      [Boolean][api.type.Boolean]
 > __Revision__          [REVISION_LABEL](REVISION_URL)
 > __Keywords__          ad, ads, show, showAd, vungle
-> __Sample code__       <https://github.com/coronalabs/plugins-sample-ads-vungle>, /CoronaSDK/SampleCode/Ads/vungle
+> __Sample code__       [https://github.com/Vungle/coronaplugin-release/tree/master/samples](https://github.com/Vungle/coronaplugin-release/tree/master/samples)
 > __See also__          [ads.show()][api.library.ads.show]
 > --------------------- ------------------------------------------------------------------------------------------
 
@@ -74,5 +74,5 @@ end
 ads.init( provider, appId, adListener )
 
 -- display an ad if a cached video is available for playback
-local wasAdShown = ads.show( "interstitial", { isAnimated = false, isBackButtonEnabled = true })
+local wasAdShown = ads.show( "interstitial", { isAnimated = false, isBackButtonEnabled = true } )
 ``````

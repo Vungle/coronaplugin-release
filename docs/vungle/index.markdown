@@ -4,7 +4,7 @@
 > __Type__              [provider][api.type.CoronaProvider]
 > __Revision__          [REVISION_LABEL](REVISION_URL)
 > __Keywords__          ads, advertising, video, vungle
-> __Sample code__       <https://github.com/Vungle/coronaplugin-release/tree/master/samples>
+> __Sample code__       [https://github.com/Vungle/coronaplugin-release/tree/master/samples](https://github.com/Vungle/coronaplugin-release/tree/master/samples)
 > __See also__          [Marketplace](http://www.coronalabs.com/resources/plugins/)
 > __Availability__      Starter, Pro, Enterprise
 > --------------------- ------------------------------------------------------------------------------------------
@@ -48,27 +48,25 @@ Initializes the Vungle ad provider with your Vungle application ID and an option
 
 Shows (plays) a Vungle video ad if one is available.
 
-
 In addition, the Vungle plugin also provides the following additional functions:
 
-#### [vungle.isAdAvailable()][plugin.vungle.isAdAvailable]
+#### [CoronaProvider.ads.vungle.isAdAvailable()][plugin.vungle.isAdAvailable]
 
 Vungle downloads and pre-caches the next video ad to show in the background for optimal user experience.  
 
 Returns a boolean indicating whether an ad has been cached and is available for playback.
 
-#### [vungle.getVersionString()][plugin.vungle.getVersionString]
+#### [CoronaProvider.ads.vungle.getVersionString()][plugin.vungle.getVersionString]
 
 Returns a string describing the Vungle plugin version.
 
-#### [vungle.showCacheFiles()][plugin.vungle.showCacheFiles]
+#### [CoronaProvider.ads.vungle.showCacheFiles()][plugin.vungle.showCacheFiles]
 
 (iOS only) Outputs the list of files in the Vungle cache to the log.
 
 ## Project Settings
 
 ### SDK
-
 
 When you build using the Corona Simulator, the server automatically takes care of integrating the ads plugin into your project.
 
@@ -93,11 +91,12 @@ settings =
 
 ## Sample Code
 
-<https://github.com/Vungle/coronaplugin-release/tree/master/samples>
+[https://github.com/Vungle/coronaplugin-release/tree/master/samples](https://github.com/Vungle/coronaplugin-release/tree/master/samples)
 
 ## Support
 
 More support is available from the Vungle team:
 
-* <tech-support@vungle.com>
-* <http://v.vungle.com>
+* [tech-support@vungle.com](tech-support@vungle.com)
+* [Forum](http://forums.coronalabs.com/forum/612-vungle/)
+* [http://v.vungle.com](http://v.vungle.com)

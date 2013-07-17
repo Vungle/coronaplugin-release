@@ -6,7 +6,7 @@
 > __Return value__      none
 > __Revision__          [REVISION_LABEL](REVISION_URL)
 > __Keywords__          cache, cached, debug, display, files, showCachedFiles, showCacheFiles, show, vungle
-> __Sample code__       <https://github.com/coronalabs/plugins-sample-ads-vungle>, /CoronaSDK/SampleCode/Ads/vungle
+> __Sample code__       [https://github.com/Vungle/coronaplugin-release/tree/master/samples](https://github.com/Vungle/coronaplugin-release/tree/master/samples)
 > --------------------- ------------------------------------------------------------------------------------------
 
 ## Overview
