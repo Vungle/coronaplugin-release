@@ -26,7 +26,7 @@ The following platforms are supported:
 
 ## Syntax
 
-You access the Vungle plugin by passing its provider name to the [ads library][/guide/monetization/adSupport/index.html#plugins]:
+You access the Vungle plugin by passing its provider name to the [ads library][/guide/monetization/adSupport/index.html#ad-functions]:
 
 	local ads = require "ads"
 	ads.init( "vungle", appID [, adListener] )
@@ -97,6 +97,6 @@ settings =
 
 More support is available from the Vungle team:
 
-* [tech-support@vungle.com](tech-support@vungle.com)
+* [tech-support@vungle.com](mailto://tech-support@vungle.com)
 * [Forum](http://forums.coronalabs.com/forum/612-vungle/)
-* [http://v.vungle.com](http://v.vungle.com)
+* [https://v.vungle.com](https://v.vungle.com)
