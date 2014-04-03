@@ -29,11 +29,21 @@ _[Table][api.type.Table]._ Optional parameters for configuring video ad.  See **
 
 ### `params` Table Properties
 
-##### isAnimated ~^(optional,&#32;iOS&#32;only)^~
-_[Boolean][api.type.Boolean]._  **`true`** (default) if the video ad should transition in with a slide effect.  `false` if it should appear instantaneously.
+##### orientations ~^(optional)^~
+_[Integer]._  **`15`** (default) Bitmask for allowed orientations. 
 
-##### isAutoRotation ~^(optional)^~
-_[Boolean][api.type.Boolean]._  **`true`** (default) if the video ad should auto-rotate with the device's orientation.  `false` if it should use the ad's preferred orientation.
+Common orientations:
+
+Integer value|Binary value|Orientations
+--- | --- | ---
+`1`|`0b1`|Portrait right-side up only
+`2`|`0b10`|Portrait upside down only
+`3`|`0b11`|Portrait only
+`4`|`0b100`|Landscape right only
+`8`|`0b1000`|Landscape left only
+`12`|`0b1100`|Landscape only
+`13`|`0b1101`|All but upside down
+`15`|`0b1111`|All
 
 ##### isBackButtonEnabled ~^(optional,&#32;Android&#32;only)^~
 _[Boolean][api.type.Boolean]._  `true` if the Android back button should stop playback during the video ad and display the post-roll.  **`false`** (default) if the back button should be disabled during video ad playback.
