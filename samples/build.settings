@@ -13,7 +13,6 @@ settings =
 		{
 			"android.permission.INTERNET",
 			"android.permission.WRITE_EXTERNAL_STORAGE",
-			"android.permission.ACCESS_WIFI_STATE",
 			"android.permission.ACCESS_NETWORK_STATE"
 		},
 	},
