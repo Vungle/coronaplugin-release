@@ -50,13 +50,13 @@ local statusText = display.newText("", 0, 0, native.systemFontBold, 22 )
 
 -- show an ad if one has been downloaded and is available for playback
 function showAd()
-	ads.show( "interstitial", { isBackButtonEnabled = true } )
+	ads.show( "interstitial", { isBackButtonEnabled = false } )
 end
 
 -- event table includes:
 --		event.name		=	'adsRequest'
 --		event.provider	=	'vungle'
---		event.type			(string - e.g. 'adStart', 'adView', 'adEnd')
+--		event.type			(string - e.g. 'adStart', 'adView', 'adEnd', 'cachedAdAvailable')
 --		event.isError		(boolean)
 --		event.response		(string)
 
