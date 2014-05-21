@@ -62,12 +62,9 @@ end
 
 -- create a 'function' ad listener
 function functionAdListener( event )
-	-- video ad not yet downloaded and available
-	if event.type == "adStart" and event.isError then
-		statusText.text = "Downloading video ad ..."
-		statusText.x = display.contentWidth * 0.5
-		-- wait 5 seconds before retrying to display ad
-		timer.performWithDelay(5000, showAd)
+	-- video ad downloaded and available
+	if event.type == "cachedAdAvailable" then
+		showAd()
 	-- video ad displayed and then closed
 	elseif event.type == "adEnd" then
 		statusText.text = "Hope you enjoyed the video!"
@@ -121,8 +118,8 @@ if sysEnv == "simulator" then
 	warningText:setReferencePoint( display.CenterReferencePoint )
 	warningText.x, warningText.y = display.contentWidth * 0.5, display.contentHeight * 0.5
 else
-	-- show an ad if one if available for playback
-	showAd()
+	statusText.text = "Downloading video ad ..."
+	statusText.x = display.contentWidth * 0.5
 end
 
 --==================================================================================================
