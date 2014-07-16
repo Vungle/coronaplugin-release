@@ -56,11 +56,6 @@ _[Boolean][api.type.Boolean]._  **`true`** (default) if sound should be enabled 
 ##### username ~^(optional,&#32;'`incentivized`'&#32;ad&#32;type&#32;only)^~
 _[String][api.type.String]._  The user identifier you wish to receive in a server-to-server callback to reward the user in your application for a completed video ad view.
 
-##### isCloseShown ~^(optional,&#32;'`incentivized`'&#32;ad&#32;type&#32;only)^~
-_[Boolean][api.type.Boolean]._  **`true`** (default) if a close button allowing the user to skip a video ad should be shown after 4 seconds.  `false` if no close button should be shown, forcing the user to watch the entire video ad.
-
-Note:  The close button can be hidden for both ad types on the [Vungle Dashboard](https://v.vungle.com/).
-
 ## Example
 
 ``````lua
