@@ -1,102 +1,89 @@
-# CoronaProvider.ads.vungle.*
+# vungle.*
 
 > --------------------- ------------------------------------------------------------------------------------------
-> __Type__              [provider][api.type.CoronaProvider]
+> __Type__              [CoronaProvider][api.type.CoronaProvider]
+> __Library__           [ads.*][api.library.ads]
 > __Revision__          [REVISION_LABEL](REVISION_URL)
-> __Keywords__          ads, advertising, video, vungle
-> __Sample code__       [https://github.com/Vungle/coronaplugin-release/tree/master/samples](https://github.com/Vungle/coronaplugin-release/tree/master/samples)
-> __See also__          [Marketplace](http://www.coronalabs.com/resources/plugins/)
-> __Availability__      Starter, Pro, Enterprise
+> __Keywords__          ads, advertising, vungle
+> __Availability__		Starter, Basic, Pro, Enterprise
+> __Platforms__			Android, iOS
 > --------------------- ------------------------------------------------------------------------------------------
+
 
 ## Overview
 
-The Vungle [ads library][api.library.ads] provider allows easy integration of Vungle video ads in your application.
+The Vungle plugin offers easy integration of Vungle video ads using the [ads][api.library.ads] library and [ads.init()][plugin.vungle.init].
 
-## Sign Up
 
-Integrating Vungle video ads requires [free registration with Vungle](https://v.vungle.com/dashboard/signup).
+## Registration
 
-## Platforms
+Using Vungle video ads requires a free account &mdash; please [register](https://v.vungle.com/dashboard/signup) before proceeding.
 
-The following platforms are supported:
-
-* Android
-* iOS
-
-## Syntax
-
-You access the Vungle plugin by passing its provider name to the [ads library][/guide/monetization/adSupport/index.html#ad-functions]:
-
-	local ads = require "ads"
-	ads.init( "vungle", appID [, adListener] )
 
 ## Functions
 
-The Vungle plugin implements the following [ads library][api.library.ads] core API:
-
-#### [ads.hide()][api.library.ads.hide]
-
-No-op.  Vungle video ads hide themselves when the user clicks the close button.
-
-#### [ads.init()][api.library.ads.init]
-
-Initializes the Vungle ad provider with your Vungle application ID and an optional (function or table) 
-[event listener](http://developer.coronalabs.com/content/events-and-listeners).
+#### [ads.init()][plugin.vungle.init]
 
 #### [ads.show()][plugin.vungle.show]
 
-Shows (plays) a Vungle video ad if one is available.
+<s>
 
-In addition, the Vungle plugin also provides the following additional functions:
+#### [ads.hide()][plugin.vungle.hide]
 
-#### [CoronaProvider.ads.vungle.isAdAvailable()][plugin.vungle.isAdAvailable]
+</s>
 
-Vungle downloads and pre-caches the next video ad to show in the background for optimal user experience.  
+#### [isAdAvailable()][plugin.vungle.isAdAvailable]
 
-Returns a boolean indicating whether an ad has been cached and is available for playback.
+#### [getVersionString()][plugin.vungle.getVersionString]
 
-#### [CoronaProvider.ads.vungle.getVersionString()][plugin.vungle.getVersionString]
+#### [showCacheFiles()][plugin.vungle.showCacheFiles]
 
-Returns a string describing the Vungle plugin version.
-
-#### [CoronaProvider.ads.vungle.showCacheFiles()][plugin.vungle.showCacheFiles]
-
-(iOS only) Outputs the list of files in the Vungle cache to the log.
 
 ## Project Settings
 
-### SDK
+To use this plugin, add the following entries into the `plugins` table of `build.settings`. When added, the build server will integrate the plugin during the build phase.
 
-When you build using the Corona Simulator, the server automatically takes care of integrating the ads plugin into your project.
-
-All you need to do is add an entry into a `plugins` table of your `build.settings`.  
-
-The following is an example of a minimal `build.settings` file:
-
-``````
+``````lua
 settings =
 {
 	plugins =
 	{
-		-- key is the name passed to Lua's 'require()'
 		["CoronaProvider.ads.vungle"] =
 		{
-			-- required
 			publisherId = "com.vungle",
+		},
+		["plugin.google.play.services"] =
+		{
+			publisherId = "com.coronalabs"
 		},
 	},		
 }
 ``````
 
-## Sample Code
+### Android
 
-[https://github.com/Vungle/coronaplugin-release/tree/master/samples](https://github.com/Vungle/coronaplugin-release/tree/master/samples)
+For Android, the following permissions/features are automatically added when using this plugin:
+
+``````lua
+	android =
+	{
+		usesPermissions =
+		{
+			"android.permission.INTERNET",
+			"android.permission.WRITE_EXTERNAL_STORAGE",
+			"android.permission.ACCESS_NETWORK_STATE",
+		},
+	},
+``````
+
+
+## Sample
+
+[https://github.com/Vungle/coronaplugin-release/tree/master/samples/](https://github.com/Vungle/coronaplugin-release/tree/master/samples)
+
 
 ## Support
 
-More support is available from the Vungle team:
-
 * [tech-support@vungle.com](mailto://tech-support@vungle.com)
-* [Forum](http://forums.coronalabs.com/forum/612-vungle/)
-* [https://v.vungle.com](https://v.vungle.com)
+* [https://v.vungle.com/](https://v.vungle.com)
+* [Corona Forums](http://forums.coronalabs.com/forum/612-vungle/)

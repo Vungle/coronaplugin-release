@@ -18,7 +18,8 @@ local metadata =
 				[[<activity android:name="com.vungle.publisher.FullScreenAdActivity"
 					android:configChanges="keyboardHidden|orientation|screenSize"
 					android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>]],
-				[[<service android:name="com.vungle.publisher.VungleService" android:exported="false"/>]]
+				[[<service android:name="com.vungle.publisher.VungleService" android:exported="false"/>]],
+				[[<meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version"/>]],
 			},
 		},
 	},

@@ -1,37 +1,31 @@
-# CoronaProvider.ads.vungle.getVersionString()
+# vungle.getVersionString()
 
 > --------------------- ------------------------------------------------------------------------------------------
 > __Type__              [function][api.type.function]
-> __Library__           [CoronaProvider.ads.vungle.*][plugin.vungle]
 > __Return value__      [String][api.type.String]
 > __Revision__          [REVISION_LABEL](REVISION_URL)
-> __Keywords__          display, get, getVersionString, show, string, version, vungle
-> __Sample code__       [https://github.com/Vungle/coronaplugin-release/tree/master/samples](https://github.com/Vungle/coronaplugin-release/tree/master/samples)
+> __Keywords__          ads, advertising, vungle
+> __See also__          [vungle.*][plugin.vungle]
 > --------------------- ------------------------------------------------------------------------------------------
+
 
 ## Overview
 
-Returns the plugin and underlying SDK version numbers as a [String][api.type.String].
+Returns the plugin and underlying SDK version numbers as a string.
+
 
 ## Syntax
 
 	vungle.getVersionString()
 
+
 ## Example
 
 ``````lua
--- name of the Vungle 'ads' provider
-local provider = "vungle"
+local ads = require( "ads" )
 
--- replace with your own Vungle application ID
-local appId = "vungleTest"
+ads.init( "vungle", "myAppId" )
 
--- load Corona 'ads' library
-local ads = require "ads"
-
--- initialize the 'ads' library using Vungle as the provider and without the optional 3rd parameter 'listener'
-ads.init( provider, appId )
-
--- outputs a string of the form "1.0.0 (VungleDroid/1.2.2)"
-print(ads.getVersionString())
+-- Outputs a string in the form "1.0.0 (VungleDroid/1.2.2)"
+print( ads.getVersionString() )
 ``````

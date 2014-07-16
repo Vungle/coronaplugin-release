@@ -1,83 +1,70 @@
-# CoronaProvider.ads.vungle.show()
+# vungle.show()
 
 > --------------------- ------------------------------------------------------------------------------------------
 > __Type__              [function][api.type.function]
-> __Library__           [CoronaProvider.ads.vungle.*][plugin.vungle]
 > __Return value__      [Boolean][api.type.Boolean]
 > __Revision__          [REVISION_LABEL](REVISION_URL)
-> __Keywords__          ad, ads, show, showAd, vungle
-> __Sample code__       [https://github.com/Vungle/coronaplugin-release/tree/master/samples](https://github.com/Vungle/coronaplugin-release/tree/master/samples)
-> __See also__          [ads.show()][api.library.ads.show]
+> __Keywords__          ads, advertising, vungle
+> __See also__          [ads.init()][plugin.vungle.init]
+>								[vungle.*][plugin.vungle]
 > --------------------- ------------------------------------------------------------------------------------------
+
 
 ## Overview
 
-Displays a full-screen video ad if one is cached and available for display.
+`ads.show()` begins playing a full-screen video ad if one is cached and available for display.
+
+For Vungle, this API returns a boolean `true` or `false` depending on the availability of a cached video ad.
+
 
 ## Syntax
 
 	ads.show( adUnitType [, params] )
 
 ##### adUnitType ~^(required)^~
-_[String][api.type.String]._ Vungle supports the following ad types:
+_[String][api.type.String]._ Vungle supports the following types:
 
-* `interstitial` - default video ad unit
-* `incentivized` - video ad unit with optional server-to-server callback for in-app rewards
+* `"interstitial"` &mdash; default video ad unit
+* `"incentivized"` &mdash; video ad unit with optional server-to-server callback for in-app rewards
 
 ##### params ~^(optional)^~
-_[Table][api.type.Table]._ Optional parameters for configuring video ad.  See **`params` Table Properties** below.
+_[Table][api.type.Table]._ A table that specifies properties for the ad request — see the next section for details.
 
-### `params` Table Properties
+
+## Parameter Reference
+
+The `params` table can include properties for the ad request.
+
+##### isAnimated ~^(optional)^~
+_[Boolean][api.type.Boolean]._ This parameter only applies to iOS. If `true` (default), the video ad will transition in with a slide effect. If `false`, it will appear instantaneously.
+
+##### isAutoRotation ~^(optional)^~
+_[Boolean][api.type.Boolean]._ If `true` (default), the video ad will rotate automatically with the device's orientation. If `false`, it will use the ad's preferred orientation. This is Android only. For iOS, look into the `orientations` key.
 
 ##### orientations ~^(optional)^~
-_[Integer]._  **`15`** (default) Bitmask for allowed orientations. 
+_[Boolean][api.type.Integer]._ Bitmaks with the possible orientation values. Default is `UIInterfaceOrientationMaskAll`.
 
-Common orientations:
-
-Integer value|Binary value|Orientations
---- | --- | ---
-`1`|`0b1`|Portrait right-side up only
-`2`|`0b10`|Portrait upside down only
-`3`|`0b11`|Portrait only
-`4`|`0b100`|Landscape right only
-`8`|`0b1000`|Landscape left only
-`12`|`0b1100`|Landscape only
-`13`|`0b1101`|All but upside down
-`15`|`0b1111`|All
-
-##### isBackButtonEnabled ~^(optional,&#32;Android&#32;only)^~
-_[Boolean][api.type.Boolean]._  `true` if the Android back button should stop playback during the video ad and display the post-roll.  **`false`** (default) if the back button should be disabled during video ad playback.
-
-Note:  The back button is always enabled in the post-roll.  When pressed, it exits the ad completely and returns the user to your application.
+##### isBackButtonEnabled ~^(optional)^~
+_[Boolean][api.type.Boolean]._ This parameter only applies to Android. If `true`, the Android back button will stop playback of the video ad and display the post-roll. If `false` (default), the back button will be disabled during playback. Note that the back button is always enabled in the post-roll &mdash; when pressed, it exits the ad and returns to the application.
 
 ##### isSoundEnabled ~^(optional)^~
-_[Boolean][api.type.Boolean]._  **`true`** (default) if sound should be enabled during video ad playback (subject to the device's sound settings as well).  `false` if video playback should start muted.  The user can always choose to mute or unmute sound during playback.
+_[Boolean][api.type.Boolean]._ If `true` (default), sound will be enabled during video ad playback, subject to the device's sound settings. If `false`, video playback will begin muted. Note that the user can mute or <nobr>un-mute</nobr> sound during playback.
 
-##### username ~^(optional,&#32;'`incentivized`'&#32;ad&#32;type&#32;only)^~
-_[String][api.type.String]._  The user identifier you wish to receive in a server-to-server callback to reward the user in your application for a completed video ad view.
+##### username ~^(optional)^~
+_[String][api.type.String]._ This parameter only applies to the `"incentivized"` ad unit type. When specified, it represents the user identifier that you wish to receive in a <nobr>server-to-server</nobr> callback that rewards the user for a completed video ad view.
 
 ## Example
 
 ``````lua
--- name of the Vungle 'ads' provider
-local provider = "vungle"
+local ads = require( "ads" )
 
--- replace with your own Vungle application ID
-local appId = "vungleTest"
-
--- load Corona 'ads' library
-local ads = require "ads"
-
--- listener that handles a video ad not being available for display
 local function adListener( event )
-    if event.type == "adStart" and event.isError then
-        -- cached video ad not available for display
-    end
+	if ( event.type == "adStart" and event.isError ) then
+		--Cached video ad not available for display
+	end
 end
 
--- initialize the 'ads' library using Vungle as the provider with 'adListener' as an optional 3rd parameter
-ads.init( provider, appId, adListener )
+ads.init( "vungle", "myAppId", adListener )
 
--- display an ad if a cached video is available for playback
-local wasAdShown = ads.show( "interstitial", { isAnimated = false, isBackButtonEnabled = true } )
+local adShown = ads.show( "interstitial", { isAnimated=false, isBackButtonEnabled=true } )
 ``````
