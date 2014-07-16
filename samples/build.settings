@@ -39,5 +39,9 @@ settings =
 			-- required
 			publisherId = "com.vungle",
 		},
+		["plugin.google.play.services"] =
+		{
+			publisherId = "com.coronalabs"
+		},
 	}
 }
