@@ -41,7 +41,7 @@ Using Vungle video ads requires a free account &mdash; please [register](https:/
 
 ## Project Settings
 
-To use this plugin, add the following entries into the `plugins` table of `build.settings`. When added, the build server will integrate the plugin during the build phase.
+To use this plugin, add an entry into the `plugins` table of `build.settings`. When added, the build server will integrate the plugin during the build phase.
 
 ``````lua
 settings =
@@ -52,11 +52,24 @@ settings =
 		{
 			publisherId = "com.vungle",
 		},
-		["plugin.google.play.services"] =
-		{
-			publisherId = "com.coronalabs"
-		},
 	},		
+}
+``````
+
+**Important**
+
+If targeting Android and using Corona SDK version 2014.2264 or greater, you will also need to add Google Play Services to the `plugins` table of `build.settings`:
+
+``````lua
+settings =
+{
+        plugins =
+        {
+                ["plugin.google.play.services"] =
+                {
+                        publisherId = "com.coronalabs"
+                },
+        },
 }
 ``````
 
@@ -76,11 +89,9 @@ For Android, the following permissions/features are automatically added when usi
 	},
 ``````
 
-
 ## Sample
 
-[https://github.com/Vungle/coronaplugin-release/tree/master/samples/](https://github.com/Vungle/coronaplugin-release/tree/master/samples)
-
+[https://github.com/Vungle/vungle-resources/tree/master/Corona-resources/coronaSampleApp](https://github.com/Vungle/vungle-resources/tree/master/Corona-resources/coronaSampleApp)
 
 ## Support
 
