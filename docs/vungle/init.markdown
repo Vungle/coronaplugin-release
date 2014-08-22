@@ -28,4 +28,41 @@ _[String][api.type.String]._ String value for the provider name. For Vungle, use
 _[String][api.type.String]._ String containing the app ID.
 
 ##### adListener ~^(optional)^~
-_[Listener][api.type.Listener]._ Listener function that will receive an event indicating if showing an ad via [ads.show()][plugin.vungle.show] has succeeded or failed. It will be called for every new ad that is requested. In the passed event, `event.isError` will be `true` if the system failed to retrieve an ad &mdash; this can occur if the ad network is unreachable or is out of inventory/ads, in which case nothing is shown on screen. `event.isError` will be `false` if an ad was successfully retrieved and displayed on screen.
+_[Listener][api.type.Listener]._ [Function][api.type.Function] or [table][api.type.Table] that will handle ad lifecycle events from the Vungle plugin.  Vungle notifies you of the following events:
+
+###### adStart
+> ------------------------ ------------------------------------------------------------------------------------------
+> name                     adsRequest
+> provider                 vungle
+> type                     adEnd
+> isError                  `false` if an ad started playing; `true` if an ad could not be played
+> response                 reason why ad could not be played if `isError` is `true`
+> ------------------------ ------------------------------------------------------------------------------------------
+
+###### adView
+> ------------------------ ------------------------------------------------------------------------------------------
+> name                     adsRequest
+> provider                 vungle
+> type                     adEnd
+> isError                  false
+> totalAdSeconds           the total length of the video in seconds
+> secondsWatched           the length of the longest view by the user, in seconds
+> isCompletedView          `true` if the user watched 80% of the video; `false` otherwise
+> ------------------------ ------------------------------------------------------------------------------------------
+
+###### adEnd
+> ------------------------ ------------------------------------------------------------------------------------------
+> name                     adsRequest
+> provider                 vungle
+> type                     adEnd
+> isError                  false
+> wasCallToActionClicked   `true` if the user clicked on the call-to-action (usually 'Download'); `false` otherwise
+> ------------------------ ------------------------------------------------------------------------------------------
+
+###### cachedAdAvailable
+> ------------------------ ------------------------------------------------------------------------------------------
+> name                     adsRequest
+> provider                 vungle
+> type                     cachedAdAvailable
+> isError                  false
+> ------------------------ ------------------------------------------------------------------------------------------
