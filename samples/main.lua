@@ -154,8 +154,7 @@ if sysEnv == "simulator" then
 	local font, size = native.systemFontBold, 22
 	local warningText = display.newRetinaText( "Please build for device or Xcode simulator to test this sample.", 0, 0, 290, 300, font, size )
 	warningText:setTextColor( 255 )
-	warningText:setReferencePoint( display.CenterReferencePoint )
-	warningText.x, warningText.y = display.contentWidth * 0.5, display.contentHeight * 0.5
+	warningText.x, warningText.y = display.contentWidth * 0.5, 160
 else
 	statusText.text = "Downloading video ad ..."
 	statusText.x = display.contentWidth * 0.5
