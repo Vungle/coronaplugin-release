@@ -91,7 +91,7 @@ For Android, the following permissions/features are automatically added when usi
 
 ## Sample
 
-[https://github.com/Vungle/vungle-resources/tree/master/English/Corona](https://github.com/Vungle/vungle-resources/tree/master/English/Corona)
+[publisher-sample-corona](https://github.com/Vungle/publisher-sample-corona)
 
 ## Support
 
